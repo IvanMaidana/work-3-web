@@ -13,6 +13,7 @@ require("./models/Usuario");
 require("./models/Produto")
 require("./models/Categoria")
 require("./models/Estoque")
+require("dotenv").config()
 const Usuario = mongoose.model("usuarios");
 const Produto = mongoose.model("produtos")
 const Categoria = mongoose.model("categorias")
@@ -53,7 +54,7 @@ const {Logado} = require("./helpers/Logado")
 
 //mongoose        
     mongoose.Promise = global.Promise;
-    mongoose.connect(db.mongoURI, {
+    mongoose.connect(process.env.MONGODB_URI, {
     }).then(() => {
         console.log("conectado ao MongoDB Atlas");
     }).catch((err) => {
